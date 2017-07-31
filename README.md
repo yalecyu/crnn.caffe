@@ -22,18 +22,17 @@ clone the code
 If there some problems,you can confirm your basic the setting of caffe and server.Build this project is the same way like build caffe.
 
 # Test
-For example,I run a smaill captcha model.I can use like:
-> ./build/examples/cpp_recognition/recognition.bin (your).jpg (your).prototxt (your).caffemodel
->
+For example,I run a smaill captcha model.You can use like: ./build/examples/cpp_recognition/recognition.bin (your).jpg (your).prototxt (your).caffemodel
+
 > ./build/examples/cpp_recognition/recognition.bin data/captcha/1.png examples/crnn/deploy.prototxt examples/crnn/model/crnn_captcha.caffemodel
 
 ![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/1.png)
 "- - - - - 8 8 - - - - 0 - - - - 3 3 - - - - 5 - - - - - 9 9 - -"
 the ans is 80359
 You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_recognition/recognition.cpp & examples/crnn/crnn.prototxt,to suit your project.
-# Train
 
-## make data
+# Train
+#### make data
 > python examples/crnn/generate_captcha.py
 >
 > python examples/crnn/generate_dateset.py
@@ -41,11 +40,12 @@ You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_re
 
 * You can read the image at data/captcha/ 
 
-## train
+#### train
 > ./examples/crnn/train.sh
 
-## free time
-a cup of caffe
+#### free time
+* a cup of caffe
+* You can get the more information by reading code
 
 # Acknowledgements
 
