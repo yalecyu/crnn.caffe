@@ -28,7 +28,7 @@ For example,I run a smaill captcha model.I can use like:
 > ./build/examples/cpp_recognition/recognition.bin data/captcha/1.png examples/crnn/deploy.prototxt examples/crnn/model/crnn_captcha.caffemodel
 
 ![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/1.png)
-- - - - - 8 8 - - - - 0 - - - - 3 3 - - - - 5 - - - - - 9 9 - -
+"- - - - - 8 8 - - - - 0 - - - - 3 3 - - - - 5 - - - - - 9 9 - -"
 the ans is 80359
 You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_recognition/recognition.cpp & examples/crnn/crnn.prototxt,to suit your project.
 # Train
