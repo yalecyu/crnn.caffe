@@ -24,21 +24,29 @@ If there some problems,you can confirm your basic the setting of caffe and serve
 # Test
 For example,I run a smaill captcha model.I can use like:
 > ./build/examples/cpp_recognition/recognition.bin (your).jpg (your).prototxt (your).caffemodel
-For captcha
+>
 > ./build/examples/cpp_recognition/recognition.bin data/captcha/1.png examples/crnn/deploy.prototxt examples/crnn/model/crnn_captcha.caffemodel
-> - - - - - 8 8 - - - - 0 - - - - 3 3 - - - - 5 - - - - - 9 9 - -
-> the ans is 80359
+
+![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/1.png)
+- - - - - 8 8 - - - - 0 - - - - 3 3 - - - - 5 - - - - - 9 9 - -
+the ans is 80359
 You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_recognition/recognition.cpp & examples/crnn/crnn.prototxt,to suit your project.
 # Train
 
 ## make data
 > python examples/crnn/generate_captcha.py
+>
 > python examples/crnn/generate_dateset.py
+
+
 * You can read the image at data/captcha/ 
+
 ## train
 > ./examples/crnn/train.sh
+
 ## free time
 a cup of caffe
+
 # Acknowledgements
 
 The authors would like to thank the developers of  [crnn](https://github.com/bgshih/crnn)  [cnn.pytorch](https://github.com/meijieru/crnn.pytorch)  [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe),without your help ,I can't write the crnn.caffe.When I send the email to you,always get the suggest quickly.
