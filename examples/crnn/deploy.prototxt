@@ -348,7 +348,7 @@ layer {
   bottom: "lstm2"
   top: "fc1"
   inner_product_param {
-    num_output: 37
+    num_output: 11
 	axis: 2
     weight_filler {
       type: "xavier"

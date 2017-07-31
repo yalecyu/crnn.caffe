@@ -68,10 +68,10 @@ std::vector<int> Classifier::Predict(const cv::Mat& img) {
   Blob<float>* output_layer = net_->output_blobs()[0];
   int alphabet_size=output_layer->shape(2);
   int time_step=output_layer->shape(0);
-  vector<int>pred_label_seq_with_blank(time_step);
+  vector<int>pred_label_seq_with_blank;
   const float* begin = output_layer->cpu_data();
   for(int t=0;t<time_step;t++){
-    pred_label_seq_with_blank[t]=max_element(begin,begin+alphabet_size)-begin;
+    pred_label_seq_with_blank.push_back(max_element(begin,begin+alphabet_size)-begin);
     begin+=alphabet_size;
   }
   return pred_label_seq_with_blank;
@@ -123,7 +123,8 @@ int main(int argc, char** argv){
     resize(image,resizeimg,Size(128,32),0,0,CV_INTER_LINEAR);
     vector<int> ans=classifier.Classify(resizeimg);
     for(int i=0;i<ans.size();i++){
-        if(ans[i]==36)cout<<'-';
+        if(i)cout<<" ";
+        if(ans[i]==10)cout<<"-";
         else cout<<ans[i];
     }
     cout<<endl;

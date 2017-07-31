@@ -456,7 +456,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 37
+    num_output: 11
 	axis: 2
     weight_filler {
       type: "xavier"
@@ -477,8 +477,8 @@ layer {
 	top: "ctc_loss"
 	loss_weight: 1.0
 	ctc_loss_param {
-		blank_label: 36
-		alphabet_size: 37
+		blank_label: 10
+		alphabet_size: 11
     	time_step: 32
 	}
 }
@@ -502,6 +502,6 @@ layer {
   bottom: "label"
   top: "accuracy"
   labelsequence_accuracy_param {
-    blank_label: 36
+    blank_label: 10
   }
 }

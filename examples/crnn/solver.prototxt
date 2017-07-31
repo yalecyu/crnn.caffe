@@ -1,4 +1,4 @@
-net: "./examples/warpctc_captcha/crnn.prototxt"
+net: "./examples/crnn/crnn.prototxt"
 
 test_iter: 50
 test_interval: 200
@@ -11,6 +11,6 @@ max_iter: 50000
 momentum: 0.9
 weight_decay: 0.0005
 snapshot: 1000
-snapshot_prefix: "./examples/warpctc_captcha/model/crnn"
+snapshot_prefix: "./examples/crnn/model/crnn_captcha"
 solver_mode: GPU
 clip_gradients: 5000
