@@ -2,7 +2,7 @@
 
 ​This software implements the Convolutional Recurrent Neural Network (CRNN) in caffe. Origin software could be found in [crnn](https://github.com/bgshih/crnn) .You can also find the [cnn.pytorch](https://github.com/meijieru/crnn.pytorch) 
 
-# Crnn.caffe
+# crnn.caffe
 
 ​The initial environment for this project is [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe).
 ​The network framework is from  [cnn.pytorch](https://github.com/meijieru/crnn.pytorch) ,it also can be read from  [crnn](https://github.com/bgshih/crnn) 
@@ -35,7 +35,7 @@ You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_re
 #### make data
 > python examples/crnn/generate_captcha.py
 >
-> python examples/crnn/generate_dateset.py
+> python examples/crnn/generate_dataset.py
 
 
 * You can read the image at data/captcha/ 
@@ -49,7 +49,7 @@ You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_re
 
 # Acknowledgements
 
-The authors would like to thank the developers of  [crnn](https://github.com/bgshih/crnn)  [cnn.pytorch](https://github.com/meijieru/crnn.pytorch)  [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe),without your help ,I can't write the crnn.caffe.When I send the email to you,always get the suggest quickly.
+The authors would like to thank the developers of  [crnn](https://github.com/bgshih/crnn)  [crnn.pytorch](https://github.com/meijieru/crnn.pytorch)  [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe),without your help ,I can't write the crnn.caffe.When I send the email to you,always get the suggest quickly.
 
 Please let me know if you encounter any issues.
 
