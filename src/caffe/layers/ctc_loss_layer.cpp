@@ -1,3 +1,4 @@
+#include <numeric>
 #include <caffe/layers/ctc_loss_layer.hpp>
 namespace caffe {
 

@@ -21,6 +21,23 @@ clone the code
 
 If there some problems,you can confirm your basic the setting of caffe and server.Build this project is the same way like build caffe.
 
+If you are using mac, you need to change something:
+
+1. Makefile.config
+```
+-# CPU_ONLY := 1
++CPU_ONLY := 1
+
+-# CUSTOM_CXX := g++
++CUSTOM_CXX := g++
+```
+
+2. src/caffe/layers/ctc_loss_layer.cpp
+```
++#include <numeric>
+ #include <caffe/layers/ctc_loss_layer.hpp>
+```
+
 # Test
 For example,I run a smaill captcha model.You can use like: ./build/examples/cpp_recognition/recognition.bin (your).jpg (your).prototxt (your).caffemodel
 
@@ -49,7 +66,7 @@ You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_re
 
 # Acknowledgements
 
-The authors would like to thank the developers of  [crnn](https://github.com/bgshih/crnn)  [cnn.pytorch](https://github.com/meijieru/crnn.pytorch)  [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe),without your help ,I can't write the crnn.caffe.When I send the email to you,always get the suggest quickly.
+The authors would like to thank the developers of  [crnn](https://github.com/bgshih/crnn)  [crnn.pytorch](https://github.com/meijieru/crnn.pytorch)  [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe),without your help ,I can't write the crnn.caffe.When I send the email to you,always get the suggest quickly.
 
 Please let me know if you encounter any issues.
 
