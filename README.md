@@ -1,4 +1,3 @@
-# Convolutional Recurrent Neural Network
 
 **Update 0-->** There are some thing well be update, waittttt.....
 
@@ -9,6 +8,8 @@
 **Hint 1-->** The 'generate_dateset.py' make the data of image belongs [0, 1], becauof 'caffe.io.load_image'. You need notice it when you test the model from read data(It maybe belong [0, 255]), or you can set the parameter of 'caffe.io.load_image'.
 
 **Hint 2-->** For the project of OCR, the best way that you generate data by code. It need lots of data, so mark them is a huge project.
+
+# Convolutional Recurrent Neural Network
 
 ​This software implements the Convolutional Recurrent Neural Network (CRNN) in caffe. Origin software could be found in [crnn](https://github.com/bgshih/crnn) .You can also find the [cnn.pytorch](https://github.com/meijieru/crnn.pytorch) 
 
