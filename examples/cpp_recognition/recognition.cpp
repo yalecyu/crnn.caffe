@@ -113,19 +113,26 @@ void Classifier::Preprocess(const cv::Mat& img,std::vector<cv::Mat>* input_chann
     << "Input channels are not wrapping the input layer of the network.";
 }
 int main(int argc, char** argv){
-    caffe::GlobalInit(&argc,&argv);
+    //caffe::GlobalInit(&argc,&argv);
     string file_path=(string)argv[1];
     string proto_cnn_file=(string)argv[2];
     string model_cnn_file=(string)argv[3];
+    int blank_label = 10;
 	Classifier classifier(proto_cnn_file,model_cnn_file);
     Mat image=imread(file_path);
     Mat resizeimg;
     resize(image,resizeimg,Size(128,32),0,0,CV_INTER_LINEAR);
     vector<int> ans=classifier.Classify(resizeimg);
+    cout << "Original result" << endl;
     for(int i=0;i<ans.size();i++){
-        if(i)cout<<" ";
-        if(ans[i]==10)cout<<"-";
-        else cout<<ans[i];
+        if(ans[i] == blank_label) cout << "-" ;
+        else cout << ans[i];
     }
-    cout<<endl;
+    cout << endl << "Final result" << endl;
+    int pre = -1;
+    for(int i = 0; i < ans.size(); i++) {
+        if(ans[i] != blank_label && ans[i] != pre) cout << ans[i];
+        pre = ans[i];
+    }
+    cout << endl;
 }

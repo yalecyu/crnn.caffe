@@ -5,14 +5,14 @@ test_interval: 200
 
 base_lr: 0.001
 lr_policy: "multistep"
-stepvalue: 2000
-stepvalue: 4000
+stepvalue: 500
 
 gamma: 0.1
 
-display: 50
+display: 10
 
-max_iter: 60000
+max_iter: 1000
+
 momentum: 0.9
 
 weight_decay: 0.0005
@@ -21,4 +21,4 @@ snapshot: 1000
 snapshot_prefix: "./examples/crnn/model/crnn_captcha"
 
 solver_mode: GPU
-clip_gradients: 5000
+clip_gradients: 520

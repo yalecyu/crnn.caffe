@@ -12,7 +12,7 @@ layer {
         batch_size: 523
     }
 }
-#w:96*32
+#The shape input w*h is ---------> 128 * 32
 layer {
     name: "data"
     type: "HDF5Data"
@@ -50,7 +50,7 @@ layer {
     }
   }
 }
-#w*h:48*16
+#The shape w*h is ---------> 64 * 16
 layer {
 	bottom: "conv0"
 	top: "conv0"
@@ -164,7 +164,7 @@ layer {
     stride: 2
   }
 }
-#w*h:24*8
+#The shape w*h is ---------> 32 * 8
 layer {
   name: "conv2"
   type: "Convolution"
@@ -302,7 +302,7 @@ layer {
     stride: 2
   }
 }
-#w*h:12*4
+#The shape w*h is ---------> 16 * 4
 layer {
   name: "conv4"
   type: "Convolution"
@@ -381,7 +381,6 @@ layer {
     num_output: 512
     kernel_size: 3
     stride: 1
-    pad_w: 1
     weight_filler {
       type: "xavier"
     }
@@ -390,7 +389,7 @@ layer {
     }
   }
 }
-#12*2
+#The shape w*h is ---------> 14 * 2
 layer {
 	bottom: "conv5"
 	top: "conv5"
@@ -443,9 +442,8 @@ layer {
   }
   convolution_param {
     num_output: 512
-    kernel_size: 3
+    kernel_size: 2
     stride: 1
-    pad: 1
     weight_filler {
       type: "xavier"
     }
@@ -454,6 +452,7 @@ layer {
     }
   }
 }
+#The shape w*h is ---------> 13 * 1
 layer {
 	bottom: "conv6"
 	top: "conv6"
@@ -503,7 +502,7 @@ layer {
         #n*c*(w*h)
             dim: 523
             dim: 512
-            dim: 24
+            dim: 13
         }
     }
 }
@@ -524,7 +523,7 @@ layer {
     type: "ContinuationIndicator"
     top: "indicator"
     continuation_indicator_param {
-        time_step:  24
+        time_step:  13
         batch_size: 523
     }
 }
@@ -576,7 +575,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 75
+    num_output: 11
 	axis: 2
     weight_filler {
       type: "xavier"
@@ -595,9 +594,9 @@ layer {
 	top: "ctc_loss"
 	loss_weight: 1.0
 	ctc_loss_param {
-		blank_label: 74
-		alphabet_size: 75
-    	time_step: 24
+		blank_label: 10
+		alphabet_size: 11
+    	time_step: 13
 	}
 }
 
@@ -619,6 +618,6 @@ layer {
   bottom: "label"
   top: "accuracy"
   labelsequence_accuracy_param {
-    blank_label: 74
+    blank_label: 10
   }
 }
