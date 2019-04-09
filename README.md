@@ -39,11 +39,11 @@ If there some problems,you can confirm your basic the setting of caffe and serve
 # Test
 For example,I run a smaill captcha model.You can use like: ./build/examples/cpp_recognition/recognition.bin (your).jpg (your).prototxt (your).caffemodel
 
-> ./build/examples/cpp_recognition/recognition.bin data/captcha/1.png examples/crnn/deploy.prototxt examples/crnn/model/crnn_captcha.caffemodel
+> ./build/examples/cpp_recognition/recognition.bin data/captcha/11111-50550.png examples/crnn/deploy.prototxt examples/crnn/model/crnn_captcha_iter_1000.caffemodel 
 
-![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/1.png)
-"- - - - - 8 8 - - - - 0 - - - - 3 3 - - - - 5 - - - - - 9 9 - -"
-the ans is 80359
+![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/11111-50550.png)
+"5---0-5--55-0"
+the ans is 50550
 You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_recognition/recognition.cpp & examples/crnn/crnn.prototxt,to suit your project.
 
 # Train
