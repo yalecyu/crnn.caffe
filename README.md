@@ -1,28 +1,9 @@
-
-If you have any urgent questions, you can send my regular email address(yalecyu@gmail.com). Github's settings mailbox is not commonly used, github messages will be sent to the settings mailbox.
-
-如果有紧急问题，发送我的常用邮箱(yalecyu@gmail.com). Github推送的消息发送的是我的设置邮箱，那个邮箱我不经常使用。
-
-**Update 0:** There are some thing well be update, waittttt.....
-
-**update 1:** Update the prototxt, add the layer of 'BatchNorm' behind each layer. The learning rate can be multiplied by ten. You can get it from the new 'solver.prototxt'. The train will be faster.
-
-**Update 2:** Fix the bug of 'BatchNorm Layer' include train and test when use it.
-
-**Hint 1:** The 'generate_dateset.py' make the data of image belongs [0, 1], becauof 'caffe.io.load_image'. You need notice it when you test the model from read data(It maybe belong [0, 255]), or you can set the parameter of 'caffe.io.load_image'.
-
-**Hint 2:** For the project of OCR, the best way that you generate data by code. It need lots of data, so mark them is a huge project.
+### I have fixed the bug and update the model, you can view the new code and commit
+### 我已经修复了之前提到的BUG并且更新的模型，你可看diff来判断。(终于更了
 
 # Convolutional Recurrent Neural Network
 
 ​This software implements the Convolutional Recurrent Neural Network (CRNN) in caffe. Origin software could be found in [crnn](https://github.com/bgshih/crnn) .You can also find the [cnn.pytorch](https://github.com/meijieru/crnn.pytorch) 
-
-# Crnn.caffe
-
-​The initial environment for this project is [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe).
-​The network framework is from  [cnn.pytorch](https://github.com/meijieru/crnn.pytorch) ,it also can be read from  [crnn](https://github.com/bgshih/crnn) 
-
-​CNN-LSTM-CTC, CNN can get BxC feature vectors,they are as the input of LSTM,LTSM can work the vertors in time_step.From CRNN you can get better way to work as the end-to-end character recognition.At first,I just use the LSTM-CTC( [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe) ) to work with the license plate recognition.Loss is very slow convergence and it always overfitting.The result don't like the [cnn.pytorch](https://github.com/meijieru/crnn.pytorch) ,I run the crnn.pytorch to work with these license plate.Finally,I am determined to write the crnn.caffe.The caffe environment is easier to make a product.
 
 # Build
 
@@ -33,7 +14,8 @@ clone the code
 > cd crnn.caffe
 >
 > make
-
+> 
+> make pycaffe
 If there some problems,you can confirm your basic the setting of caffe and server.Build this project is the same way like build caffe.
 
 # Test
@@ -44,7 +26,6 @@ For example,I run a smaill captcha model.You can use like: ./build/examples/cpp_
 ![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/11111-50550.png)
 "5---0-5--55-0"
 the ans is 50550
-You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_recognition/recognition.cpp & examples/crnn/crnn.prototxt,to suit your project.
 
 # Train
 #### make data
@@ -58,14 +39,8 @@ You can change some parts of the examples/crnn/deploy.prototxt & examples/cpp_re
 #### train
 > ./examples/crnn/train.sh
 
-#### free time
-* a cup of caffe
-* You can get the more information by reading code
-
 # Acknowledgements
 
 The authors would like to thank the developers of  [crnn](https://github.com/bgshih/crnn)  [cnn.pytorch](https://github.com/meijieru/crnn.pytorch)  [warpctc-caffe](https://github.com/xmfbit/warpctc-caffe),without your help ,I can't write the crnn.caffe.When I send the email to you,always get the suggest quickly.
 
 Please let me know if you encounter any issues.
-
-
