@@ -16,6 +16,7 @@ clone the code
 > make
 > 
 > make pycaffe
+
 If there some problems,you can confirm your basic the setting of caffe and server.Build this project is the same way like build caffe.
 
 # Test
@@ -24,8 +25,7 @@ For example,I run a smaill captcha model.You can use like: ./build/examples/cpp_
 > ./build/examples/cpp_recognition/recognition.bin data/captcha/11111-50550.png examples/crnn/deploy.prototxt examples/crnn/model/crnn_captcha_iter_1000.caffemodel 
 
 ![avatar](https://github.com/yalecyu/crnn.caffe/blob/master/data/captcha/11111-50550.png)
-"5---0-5--55-0"
-the ans is 50550
+"5---0-5--55-0"   ====>    "50550"
 
 # Train
 #### make data
