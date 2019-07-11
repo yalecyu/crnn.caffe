@@ -122,6 +122,7 @@ int main(int argc, char** argv){
     Mat image=imread(file_path);
     Mat resizeimg;
     resize(image,resizeimg,Size(128,32),0,0,CV_INTER_LINEAR);
+    cv::cvtColor(resizeimg, resizeimg, cv::COLOR_BGR2RGB);
     vector<int> ans=classifier.Classify(resizeimg);
     cout << "Original result" << endl;
     for(int i=0;i<ans.size();i++){
