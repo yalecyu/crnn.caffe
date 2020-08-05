@@ -1,3 +1,4 @@
+换了个工作，又有服务器可以炼丹了！有时间我看看这玩意还能用吗
 ### I have fixed the bug and update the model, you can view the new code and commit
 ### 我已经修复了之前提到的BUG并且更新的模型，你可看diff来判断。(终于更了
 
