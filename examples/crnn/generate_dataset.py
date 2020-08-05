@@ -42,14 +42,8 @@ def write_image_info_into_hdf5(file_name, images, phase):
             label_seq[i, :len(numbers)] = numbers
             img = caffe.io.load_image(os.path.join(img_path, image))
             img = caffe.io.resize(img, (IMAGE_HEIGHT, IMAGE_WIDTH, 3))
-            img = np.transpose(img, (2, 0, 1))
+            img = np.transpose(img, (2, 0, 1)) * 255
             img_data[i] = img
-            """
-            if (i+1) % 100 == 0:
-                print '[+] name: {}'.format(image)
-                print '[+] number: {}'.format(','.join(map(lambda x: str(x), numbers)))
-                print '[+] label: {}'.format(','.join(map(lambda x: str(x), label_seq[i])))
-            """
         with h5py.File(file_name, 'w') as f:
             f.create_dataset('data', data = img_data)
             f.create_dataset('label', data = label_seq)

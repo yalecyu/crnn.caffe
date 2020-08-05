@@ -9,10 +9,10 @@ layer {
     }
     hdf5_data_param {
         source: "./data/captcha/trainning.list"
-        batch_size: 64
+        batch_size: 523
     }
 }
-
+#The shape input w*h is ---------> 128 * 32
 layer {
     name: "data"
     type: "HDF5Data"
@@ -23,10 +23,9 @@ layer {
     }
     hdf5_data_param {
         source: "./data/captcha/testing.list"
-        batch_size: 64
+        batch_size: 523
     }
 }
-
 layer {
   name: "conv0"
   type: "Convolution"
@@ -41,7 +40,7 @@ layer {
   convolution_param {
     num_output: 64
     kernel_size: 3
-    stride: 1
+    stride: 2
     pad: 1
     weight_filler {
       type: "xavier"
@@ -51,6 +50,40 @@ layer {
     }
   }
 }
+#The shape w*h is ---------> 64 * 16
+layer {
+	bottom: "conv0"
+	top: "conv0"
+	name: "bn_conv0"
+	type: "BatchNorm"
+	batch_norm_param {
+		use_global_stats: false
+	}
+    include {
+        phase: TRAIN
+    }
+}
+layer{
+    bottom:"conv0"
+    top: "conv0"
+    name: "bn_conv0"
+    type: "BatchNorm"
+    batch_norm_param{
+        use_global_stats: true
+    }
+    include{
+        phase: TEST
+    }
+}
+layer {
+	bottom: "conv0"
+	top: "conv0"
+	name: "scale_conv0"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
 layer {
   name: "relu0"
   type: "ReLU"
@@ -58,20 +91,9 @@ layer {
   top: "conv0"
 }
 layer {
-  name: "pool0"
-  type: "Pooling"
-  bottom: "conv0"
-  top: "pool0"
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride: 2
-  }
-}
-layer {
   name: "conv1"
   type: "Convolution"
-  bottom: "pool0"
+  bottom: "conv0"
   top: "conv1"
   param {
     lr_mult: 1
@@ -93,6 +115,39 @@ layer {
   }
 }
 layer {
+	bottom: "conv1"
+	top: "conv1"
+	name: "bn_conv1"
+	type: "BatchNorm"
+	batch_norm_param {
+		use_global_stats: false
+	}
+    include {
+        phase: TRAIN
+    }
+}
+layer{
+    bottom:"conv1"
+    top: "conv1"
+    name: "bn_conv1"
+    type: "BatchNorm"
+    batch_norm_param{
+        use_global_stats: true
+    }
+    include{
+        phase: TEST
+    }
+}
+layer {
+	bottom: "conv1"
+	top: "conv1"
+	name: "scale_conv1"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
+layer {
   name: "relu1"
   type: "ReLU"
   bottom: "conv1"
@@ -109,6 +164,7 @@ layer {
     stride: 2
   }
 }
+#The shape w*h is ---------> 32 * 8
 layer {
   name: "conv2"
   type: "Convolution"
@@ -141,6 +197,9 @@ layer {
 	batch_norm_param {
 		use_global_stats: false
 	}
+    include {
+        phase: TRAIN
+    }
 }
 layer{
     bottom:"conv2"
@@ -194,6 +253,39 @@ layer {
   }
 }
 layer {
+	bottom: "conv3"
+	top: "conv3"
+	name: "bn_conv3"
+	type: "BatchNorm"
+	batch_norm_param {
+		use_global_stats: false
+	}
+    include {
+        phase: TRAIN
+    }
+}
+layer{
+    bottom:"conv3"
+    top: "conv3"
+    name: "bn_conv3"
+    type: "BatchNorm"
+    batch_norm_param{
+        use_global_stats: true
+    }
+    include{
+        phase: TEST
+    }
+}
+layer {
+	bottom: "conv3"
+	top: "conv3"
+	name: "scale_conv3"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
+layer {
   name: "relu3"
   type: "ReLU"
   bottom: "conv3"
@@ -206,12 +298,11 @@ layer {
   top: "pool2"
   pooling_param {
     pool: MAX
-    kernel_h: 2
-    kernel_w: 1
-    stride_h: 2
-    stride_w: 1
+    kernel_size: 2
+    stride: 2
   }
 }
+#The shape w*h is ---------> 16 * 4
 layer {
   name: "conv4"
   type: "Convolution"
@@ -244,6 +335,9 @@ layer {
 	batch_norm_param {
 		use_global_stats: false
 	}
+    include {
+        phase: TRAIN
+    }
 }
 layer {
     bottom: "conv4"
@@ -287,7 +381,6 @@ layer {
     num_output: 512
     kernel_size: 3
     stride: 1
-    pad: 1
     weight_filler {
       type: "xavier"
     }
@@ -296,6 +389,40 @@ layer {
     }
   }
 }
+#The shape w*h is ---------> 14 * 2
+layer {
+	bottom: "conv5"
+	top: "conv5"
+	name: "bn_conv5"
+	type: "BatchNorm"
+	batch_norm_param {
+		use_global_stats: false
+	}
+    include {
+        phase: TRAIN
+    }
+}
+layer{
+    bottom:"conv5"
+    top: "conv5"
+    name: "bn_conv5"
+    type: "BatchNorm"
+    batch_norm_param{
+        use_global_stats: true
+    }
+    include{
+        phase: TEST
+    }
+}
+layer {
+	bottom: "conv5"
+	top: "conv5"
+	name: "scale_conv5"
+	type: "Scale"
+	scale_param {
+		bias_term: true
+	}
+}
 layer {
   name: "relu5"
   type: "ReLU"
@@ -303,23 +430,9 @@ layer {
   top: "conv5"
 }
 layer {
-  name: "pool3"
-  type: "Pooling"
-  bottom: "conv5"
-  top: "pool3"
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride_h: 2
-    stride_w: 1
-    pad_h: 0
-    pad_w: 1
-  }
-}
-layer {
   name: "conv6"
   type: "Convolution"
-  bottom: "pool3"
+  bottom: "conv5"
   top: "conv6"
   param {
     lr_mult: 1
@@ -339,6 +452,7 @@ layer {
     }
   }
 }
+#The shape w*h is ---------> 13 * 1
 layer {
 	bottom: "conv6"
 	top: "conv6"
@@ -347,6 +461,9 @@ layer {
 	batch_norm_param {
 		use_global_stats: false
 	}
+    include {
+        phase: TRAIN
+    }
 }
 layer {
     bottom: "conv6"
@@ -381,18 +498,20 @@ layer {
     bottom: "conv6"
     top: "reshape"
     reshape_param {
-      shape {
-        dim: 64  
-        dim: 512
-        dim: 32
-      }
+        shape {
+        #n*c*(w*h)
+            dim: 523
+            dim: 512
+            dim: 13
+        }
     }
-  }
+}
 layer {
     name: "permuted_data"
     type: "Permute"
     bottom: "reshape"
     top: "permuted_data"
+    #(w*h) * n * c
     permute_param {
         order: 2
         order: 0
@@ -404,8 +523,8 @@ layer {
     type: "ContinuationIndicator"
     top: "indicator"
     continuation_indicator_param {
-        time_step:  32
-        batch_size: 64
+        time_step:  13
+        batch_size: 523
     }
 }
 layer {
@@ -415,7 +534,7 @@ layer {
     bottom: "indicator"
     top: "lstm1"
     recurrent_param {
-        num_output: 125
+        num_output: 128
         weight_filler {
           type: "xavier"
         }
@@ -432,7 +551,7 @@ layer {
     bottom: "indicator"
     top: "lstm2"
     recurrent_param {
-        num_output: 125
+        num_output: 256
         weight_filler {
           type: "xavier"
         }
@@ -467,8 +586,6 @@ layer {
     }
   }
 }
-
-
 layer {
 	name: "ctc_loss"
 	type: "CtcLoss"
@@ -479,7 +596,7 @@ layer {
 	ctc_loss_param {
 		blank_label: 10
 		alphabet_size: 11
-    	time_step: 32
+    	time_step: 13
 	}
 }
 
@@ -494,7 +611,6 @@ layer {
     order: 2
   }
 }
-
 layer {
   name: "accuracy"
   type: "LabelsequenceAccuracy"
